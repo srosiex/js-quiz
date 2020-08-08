@@ -65,6 +65,9 @@ body.wrong{
     font-weight: bold;
     padding: 10px 20px;
 }
+.start-btn:hover{
+    background-color: pink;
+}
 .controls{
     display: flex;
     justify-content: center;
