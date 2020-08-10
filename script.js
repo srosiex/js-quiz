@@ -7,6 +7,11 @@ window.onload=function(){
     const answerButtonsElement = document.getElementById('answer-buttons')
 
     startButton.addEventListener('click', startGame)
+    nextButton.addEventListener('click', ()=>{
+        currentQuestionIndex++
+        setNextQuestion()
+    })
+
 
     function startGame() {
     startButton.classList.add('hide')
@@ -36,6 +41,7 @@ window.onload=function(){
     }
 
     function resetState(){
+        clearStatusClass(document.body)
         nextButton.classList.add('hide')
         while (answerButtonsElement.firstChild){
             answerButtonsElement.removeChild(answerButtonsElement.firstChild)
@@ -49,6 +55,13 @@ window.onload=function(){
         Array.from(answerButtonsElement.children).forEach(button => {
             setStatusClass(button, button.dataset.correct)
         })
+        if(shuffledQuestions.length > currentQuestionIndex +1){
+           nextButton.classList.remove('hide') 
+        }else{
+            startButton.innerText = "restart"
+            startButton.classList.remove('hide')
+        }
+      
     }
 
     function setStatusClass(element, correct){
@@ -71,6 +84,13 @@ window.onload=function(){
             question: 'What is 2 + 2',
             answers: [
                 {text: '4', correct: true},
+                {text: '22', correct: false}
+            ]
+        },
+        {
+            question: 'What is 5 + 2',
+            answers: [
+                {text: '7', correct: true},
                 {text: '22', correct: false}
             ]
         }
