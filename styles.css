@@ -50,7 +50,7 @@ body.wrong{
     outline: none;
 }
 .btn:hover{
-    border-color: black;
+    border-color:pink ;
 }
 
 .btn.correct{
