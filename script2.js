@@ -13,7 +13,7 @@ window.onload=function(){
     })
 
 
-    function startGame(data) {
+    function startGame(questions) {
     startButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
@@ -26,18 +26,32 @@ window.onload=function(){
         showQuestion(shuffledQuestions[currentQuestionIndex])
     }
 
-    function showQuestion(question){
-        questionElement.innerText = question.question
-        question.answers.forEach(answer => {
-            const button = document.createElement('button')
-            button.innerText = answer.text
-            button.classList.add('btn')
-            if(answer.correct){
-                button.dataset.correct = answer.correct
-            }
-            button.addEventListener('click', selectAnswer)
-            answerButtonsElement.appendChild(button)
+     function showQuestion(question){
+         questionElement.innerText = question.question
+        // question.answers.forEach(answer => {
+        //     const button = document.createElement('button')
+        //     button.innerText = answer.text
+        //     button.classList.add('btn')
+        //     if(answer.correct){
+        //         button.dataset.correct = answer.correct
+        //     }
+        //     button.addEventListener('click', selectAnswer)
+        //     answerButtonsElement.appendChild(button)
+        // })
+        console.log(question)
+        const button = document.createElement('button')
+        let button2 = document.createElement('button')
+        button.innerText = question.correct_answer
+        question.incorrect_answers.map(a=>{
+            button2 = a
         })
+        console.log(button2)
+        button.addEventListener('click', selectAnswer)
+        button2.addEventListener('click', selectAnswer)
+        answerButtonsElement.appendChild(button)
+        answerButtonsElement.appendChild(button2)
+
+
     }
 
     function resetState(){
@@ -80,16 +94,14 @@ window.onload=function(){
     }
 
     async function fetchQuestions() {
-        let questions = []
         let response = await fetch(
           "https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple"
         );
-        console.log(response);
         let data = await response.json();
-        console.log(data);
-        startGame(data)
-        questions.push(data.results)
-        console.log('qs', questions[0])
+        console.log(data)
+        const questions = data.results
+        startGame(questions)
+        console.log('qs', questions)
       }
       fetchQuestions();
 
