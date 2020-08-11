@@ -13,7 +13,7 @@ window.onload=function(){
     })
 
 
-    function startGame() {
+    function startGame(data) {
     startButton.classList.add('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
@@ -80,12 +80,16 @@ window.onload=function(){
     }
 
     async function fetchQuestions() {
+        let questions = []
         let response = await fetch(
           "https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple"
         );
         console.log(response);
         let data = await response.json();
         console.log(data);
+        startGame(data)
+        questions.push(data.results)
+        console.log('qs', questions[0])
       }
       fetchQuestions();
 
