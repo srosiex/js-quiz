@@ -47,9 +47,8 @@ window.onload=function(){
         })
         console.log(button2)
         button.addEventListener('click', selectAnswer)
-        button2.addEventListener('click', selectAnswer)
+        // button2.addEventListener('click', selectAnswer)
         answerButtonsElement.appendChild(button)
-        answerButtonsElement.appendChild(button2)
 
 
     }
