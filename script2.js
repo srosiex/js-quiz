@@ -38,16 +38,28 @@ window.onload=function(){
         //     button.addEventListener('click', selectAnswer)
         //     answerButtonsElement.appendChild(button)
         // })
-        console.log(question)
+        console.log('question ',question)
         const button = document.createElement('button')
-        let button2 = document.createElement('button')
-        button.innerText = question.correct_answer
-        question.incorrect_answers.map(a=>{
-            button2 = a
-        })
-        console.log(button2)
-        button.addEventListener('click', selectAnswer)
+        // let button2 = document.createElement('button')
+        // button.innerText = question.correct_answer
+        // question.incorrect_answers.map(a=>{
+        //     button2 = a
+        // })
+        // console.log(button2)
+        // button.addEventListener('click', selectAnswer)
         // button2.addEventListener('click', selectAnswer)
+        let answers = [];
+        let correct = {}
+        let incorrect = {}
+
+        correct = {'correct': question.correct_answer }
+        answers.push(correct)
+
+        question.incorrect_answers.map(a=>{
+            console.log('ia: ', a)
+        })
+        console.log('answers ', answers)
+        
         answerButtonsElement.appendChild(button)
 
 
