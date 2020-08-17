@@ -38,7 +38,6 @@ window.onload=function(){
         //     button.addEventListener('click', selectAnswer)
         //     answerButtonsElement.appendChild(button)
         // })
-        console.log('question ',question)
         const button = document.createElement('button')
         // let button2 = document.createElement('button')
         // button.innerText = question.correct_answer
@@ -56,11 +55,21 @@ window.onload=function(){
         answers.push(correct)
 
         question.incorrect_answers.map(a=>{
-            console.log('ia: ', a)
+            incorrect = {'incorrect': a}
+            answers.push(incorrect)
         })
-        console.log('answers ', answers)
-        
-        answerButtonsElement.appendChild(button)
+
+        for(let v in answers){
+            const button = document.createElement('button')
+            button.innerText = answer.value
+            console.log('answers ', v)
+            button.classList.add('btn')
+            if(answer.correct){
+                button.dataset.correct = answer.correct
+            }
+            button.addEventListener('click', selectAnswer)
+            answerButtonsElement.appendChild(button)
+        }
 
 
     }
@@ -133,3 +142,5 @@ window.onload=function(){
         }
     ]
 }
+
+
