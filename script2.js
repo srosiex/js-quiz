@@ -59,17 +59,26 @@ window.onload=function(){
             answers.push(incorrect)
         })
 
-        for(let v in answers){
-            const button = document.createElement('button')
-            button.innerText = answer.value
-            console.log('answers ', v)
-            button.classList.add('btn')
-            if(answer.correct){
-                button.dataset.correct = answer.correct
+        for(let hash of answers){
+            // console.log(value)
+            for(let value in hash){
+                console.log(`${hash[value]}`)
+                button.innerText = hash[value]
             }
-            button.addEventListener('click', selectAnswer)
-            answerButtonsElement.appendChild(button)
         }
+
+
+        // for(let value in answers){
+        //     const button = document.createElement('button')
+        //     button.innerText = answer.value
+        //     console.log('answers ', v)
+        //     button.classList.add('btn')
+        //     if(answer.correct){
+        //         button.dataset.correct = answer.correct
+        //     }
+        //     button.addEventListener('click', selectAnswer)
+        //     answerButtonsElement.appendChild(button)
+        // }
 
 
     }
