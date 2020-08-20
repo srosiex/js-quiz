@@ -27,26 +27,7 @@ window.onload=function(){
     }
 
      function showQuestion(question){
-         questionElement.innerText = question.question
-        // question.answers.forEach(answer => {
-        //     const button = document.createElement('button')
-        //     button.innerText = answer.text
-        //     button.classList.add('btn')
-        //     if(answer.correct){
-        //         button.dataset.correct = answer.correct
-        //     }
-        //     button.addEventListener('click', selectAnswer)
-        //     answerButtonsElement.appendChild(button)
-        // })
-        const button = document.createElement('button')
-        // let button2 = document.createElement('button')
-        // button.innerText = question.correct_answer
-        // question.incorrect_answers.map(a=>{
-        //     button2 = a
-        // })
-        // console.log(button2)
-        // button.addEventListener('click', selectAnswer)
-        // button2.addEventListener('click', selectAnswer)
+        questionElement.innerText = question.question
         let answers = [];
         let correct = {}
         let incorrect = {}
@@ -59,19 +40,17 @@ window.onload=function(){
             answers.push(incorrect)
         })
 
-        for(let hash of answers){
+        for(let obj of answers){
             const button = document.createElement('button')
             answer = []
-            // console.log(value)
-            for(let value in hash){
-                console.log(`${hash[value]}`)
-                button.innerText = hash[value]
+            for(let value in obj){
+                console.log('value: ', `${obj[value]}`)
+                button.innerText = obj[value]
                 button.classList.add('btn')
-                answer.push(hash[value])
+                answer.push(obj[value])
             }
 
-            for(let key in hash){
-               
+            for(let key in obj){
                 if(key === 'correct'){
                     button.dataset.correct = key
                     console.log(key)
