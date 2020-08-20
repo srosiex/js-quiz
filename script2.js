@@ -2,6 +2,7 @@ window.onload=function(){
     const startButton = document.getElementById('start-btn')
     const nextButton = document.getElementById('next-btn')
     const questionContainerElement = document.getElementById('question-container')
+    const scoreElement = document.getElementById('score')
     let shuffledQuestions, currentQuestionIndex, shuffledAnswers
     const questionElement = document.getElementById('question')
     const answerButtonsElement = document.getElementById('answer-buttons')
@@ -18,6 +19,7 @@ window.onload=function(){
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
+    scoreElement.classList.remove('hide')
     setNextQuestion()
     }
 
