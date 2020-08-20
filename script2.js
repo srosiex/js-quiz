@@ -27,7 +27,7 @@ window.onload=function(){
     }
 
      function showQuestion(question){
-        questionElement.innerText = question.question
+        questionElement.innerText = question.question.replace(/&quot;/g,'"')
         let answers = [];
         let correct = {}
         let incorrect = {}
@@ -48,7 +48,7 @@ window.onload=function(){
             answer = []
             for(let value in obj){
                 console.log('value: ', `${obj[value]}`)
-                button.innerText = obj[value]
+                button.innerText = obj[value].replace(/&quot;/g,'"')
                 button.classList.add('btn')
                 answer.push(obj[value])
             }

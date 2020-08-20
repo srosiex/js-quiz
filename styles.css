@@ -4,9 +4,14 @@
 }
 
 :root {
-    --hue-neutral: 337;
+    --hue-neutral: 200;
     --hue-wrong: 0;
     --hue-correct: 145;
+}
+.title {
+    font-family: 'Skranji', cursive;
+    text-align: center;
+    padding: 10px;
 }
 
 body {
