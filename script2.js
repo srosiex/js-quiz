@@ -2,7 +2,7 @@ window.onload=function(){
     const startButton = document.getElementById('start-btn')
     const nextButton = document.getElementById('next-btn')
     const questionContainerElement = document.getElementById('question-container')
-    let shuffledQuestions, currentQuestionIndex
+    let shuffledQuestions, currentQuestionIndex, shuffledAnswers
     const questionElement = document.getElementById('question')
     const answerButtonsElement = document.getElementById('answer-buttons')
 
@@ -40,7 +40,10 @@ window.onload=function(){
             answers.push(incorrect)
         })
 
-        for(let obj of answers){
+        shuffledAnswers = answers.sort(() => Math.random() - .5)
+
+
+        for(let obj of shuffledAnswers){
             const button = document.createElement('button')
             answer = []
             for(let value in obj){
