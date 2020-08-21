@@ -6,6 +6,8 @@ window.onload=function(){
     let shuffledQuestions, currentQuestionIndex, shuffledAnswers
     const questionElement = document.getElementById('question')
     const answerButtonsElement = document.getElementById('answer-buttons')
+    let correctAnswer = 0;
+    let wrongAnswer = 0;
 
     startButton.addEventListener('click', startGame)
     nextButton.addEventListener('click', ()=>{
@@ -24,6 +26,7 @@ window.onload=function(){
     }
 
     function setNextQuestion(){
+        console.log('correct: ', `${correctAnswer}`, 'incorrect: ', `${wrongAnswer}`)
         resetState()
         showQuestion(shuffledQuestions[currentQuestionIndex])
     }
@@ -49,7 +52,6 @@ window.onload=function(){
             const button = document.createElement('button')
             answer = []
             for(let value in obj){
-                console.log('value: ', `${obj[value]}`)
                 button.innerText = obj[value].replace(/&quot;/g,'"')
                 button.classList.add('btn')
                 answer.push(obj[value])
@@ -58,7 +60,8 @@ window.onload=function(){
             for(let key in obj){
                 if(key === 'correct'){
                     button.dataset.correct = key
-                    console.log(key)
+                }else{
+                    button.dataset.incorrect = key
                 }
             }
             button.addEventListener('click', selectAnswer)
@@ -76,6 +79,7 @@ window.onload=function(){
 
     function selectAnswer(e){
         const selectedButton = e.target
+
         const correct = selectedButton.dataset.correct
         setStatusClass(document.body, correct)
         Array.from(answerButtonsElement.children).forEach(button => {
@@ -110,29 +114,27 @@ window.onload=function(){
           "https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple"
         );
         let data = await response.json();
-        console.log(data)
         const questions = data.results
         startGame(questions)
-        console.log('qs', questions)
       }
       fetchQuestions();
 
-    const questions = [
-        {
-            question: 'What is 2 + 2',
-            answers: [
-                {text: '4', correct: true},
-                {text: '22', correct: false}
-            ]
-        },
-        {
-            question: 'What is 5 + 2',
-            answers: [
-                {text: '7', correct: true},
-                {text: '22', correct: false}
-            ]
-        }
-    ]
+    // const questions = [
+    //     {
+    //         question: 'What is 2 + 2',
+    //         answers: [
+    //             {text: '4', correct: true},
+    //             {text: '22', correct: false}
+    //         ]
+    //     },
+    //     {
+    //         question: 'What is 5 + 2',
+    //         answers: [
+    //             {text: '7', correct: true},
+    //             {text: '22', correct: false}
+    //         ]
+    //     }
+    // ]
 }
 
 

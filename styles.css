@@ -15,7 +15,8 @@
 }
 
 body {
-    --hue: var(--hue-neutral);
+    background: rgb(115,153,198);
+    background: radial-gradient(circle, rgba(115,153,198,1) 0%, rgba(60,88,120,1) 63%, rgba(28,40,54,1) 100%);
     padding: 0;
     margin: 0;
     display: flex;
@@ -23,13 +24,14 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: hsl(var(--hue), 100%, 20%);
 }
 body.correct{
-    --hue: var(--hue-correct);
+    background: rgb(181,237,172);
+    background: radial-gradient(circle, rgba(181,237,172,1) 0%, rgba(77,156,80,1) 63%, rgba(28,54,29,1) 100%);
 }
 body.wrong{
-    --hue: var(--hue-wrong);
+    background: rgb(237,119,119);
+    background: radial-gradient(circle, rgba(237,119,119,1) 0%, rgba(205,75,75,1) 63%, rgba(54,28,28,1) 100%);
 }
 .container{
     width: 800px;
