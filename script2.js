@@ -90,6 +90,7 @@ window.onload=function(){
         }else{
             startButton.innerText = "restart"
             startButton.classList.remove('hide')
+            nextButton.classList.add('hide')
         }
       
     }
