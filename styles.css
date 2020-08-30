@@ -40,6 +40,10 @@ body.wrong{
     border-radius: 5px;
     padding: 10px
 }
+.score-container{
+    align-items: center;
+    text-align: center;
+}
 .btn-grid{
     display: grid;
     grid-template-columns: repeat(2,auto);

@@ -5,6 +5,7 @@ window.onload=function(){
     const nextButton = document.getElementById('next-btn')
     const questionContainerElement = document.getElementById('question-container')
     const scoreElement = document.getElementById('score')
+    const scoreContainer = document.getElementById('score-container')
     let shuffledQuestions, currentQuestionIndex, shuffledAnswers
     const questionElement = document.getElementById('question')
     const answerButtonsElement = document.getElementById('answer-buttons')
@@ -24,8 +25,9 @@ window.onload=function(){
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
     scoreElement.classList.remove('hide')
+    scoreContainer.classList.remove('hide')
     setNextQuestion()
-    scoreElement.innerText = score
+    scoreElement.innerText = `${score}`
     }
 
     function setNextQuestion(){
@@ -96,9 +98,9 @@ window.onload=function(){
             nextButton.classList.add('hide')
         }
       if(correct){
-          score++,
+          score++
       }else{
-          score = score - 1,
+          score = score - 1
       }
     }
 
