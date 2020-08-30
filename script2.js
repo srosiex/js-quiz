@@ -93,7 +93,11 @@ window.onload=function(){
             startButton.classList.remove('hide')
             nextButton.classList.add('hide')
         }
-      
+      if(correct){
+          score++
+      }else{
+          score = score - 1
+      }
     }
 
     function setStatusClass(element, correct){
