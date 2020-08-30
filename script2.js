@@ -9,8 +9,7 @@ window.onload=function(){
     const questionElement = document.getElementById('question')
     const answerButtonsElement = document.getElementById('answer-buttons')
     let score = 0;
-    let correctPoints = 0;
-    let incorrectPoints = 0;
+
 
     startButton.addEventListener('click', startGame)
     nextButton.addEventListener('click', ()=>{
@@ -30,7 +29,7 @@ window.onload=function(){
     }
 
     function setNextQuestion(){
-        console.log('score: ', `${score}`, 'correct: ', `${correctPoints}`, 'incorrect: ', `${incorrectPoints}`)
+        console.log('score: ', `${score}`)
         resetState()
         showQuestion(shuffledQuestions[currentQuestionIndex])
     }
@@ -98,10 +97,8 @@ window.onload=function(){
         }
       if(correct){
           score++,
-          correctPoints++
       }else{
           score = score - 1,
-          incorrectPoints++
       }
     }
 
