@@ -9,6 +9,8 @@ window.onload=function(){
     const questionElement = document.getElementById('question')
     const answerButtonsElement = document.getElementById('answer-buttons')
     let score = 0;
+    let correctPoints = 0;
+    let incorrectPoints = 0;
 
     startButton.addEventListener('click', startGame)
     nextButton.addEventListener('click', ()=>{
@@ -24,10 +26,11 @@ window.onload=function(){
     questionContainerElement.classList.remove('hide')
     scoreElement.classList.remove('hide')
     setNextQuestion()
+    scoreElement.innerText = score
     }
 
     function setNextQuestion(){
-        console.log('score: ', `${score}`)
+        console.log('score: ', `${score}`, 'correct: ', `${correctPoints}`, 'incorrect: ', `${incorrectPoints}`)
         resetState()
         showQuestion(shuffledQuestions[currentQuestionIndex])
     }
@@ -94,9 +97,11 @@ window.onload=function(){
             nextButton.classList.add('hide')
         }
       if(correct){
-          score++
+          score++,
+          correctPoints++
       }else{
-          score = score - 1
+          score = score - 1,
+          incorrectPoints++
       }
     }
 
