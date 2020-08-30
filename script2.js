@@ -1,3 +1,5 @@
+//for score subtract point when incorrect
+
 window.onload=function(){
     const startButton = document.getElementById('start-btn')
     const nextButton = document.getElementById('next-btn')
@@ -6,8 +8,7 @@ window.onload=function(){
     let shuffledQuestions, currentQuestionIndex, shuffledAnswers
     const questionElement = document.getElementById('question')
     const answerButtonsElement = document.getElementById('answer-buttons')
-    let correctAnswer = 0;
-    let wrongAnswer = 0;
+    let score = 0;
 
     startButton.addEventListener('click', startGame)
     nextButton.addEventListener('click', ()=>{
@@ -26,7 +27,7 @@ window.onload=function(){
     }
 
     function setNextQuestion(){
-        console.log('correct: ', `${correctAnswer}`, 'incorrect: ', `${wrongAnswer}`)
+        console.log('score: ', `${score}`)
         resetState()
         showQuestion(shuffledQuestions[currentQuestionIndex])
     }
@@ -86,7 +87,7 @@ window.onload=function(){
             setStatusClass(button, button.dataset.correct)
         })
         if(shuffledQuestions.length > currentQuestionIndex +1){
-           nextButton.classList.remove('hide') 
+           nextButton.classList.remove('hide')
         }else{
             startButton.innerText = "restart"
             startButton.classList.remove('hide')
