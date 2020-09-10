@@ -17,7 +17,7 @@ window.onload=function(){
         currentQuestionIndex++
         setNextQuestion()
     })
-
+    
 
     function startGame(questions) {
     startButton.classList.add('hide')
@@ -28,7 +28,6 @@ window.onload=function(){
     }
 
     function setNextQuestion(){
-        console.log('score: ', `${score}`)
         resetState()
         showQuestion(shuffledQuestions[currentQuestionIndex])
     }
@@ -124,7 +123,7 @@ window.onload=function(){
           "https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple"
         );
         let data = await response.json();
-        const questions = data.results
+        let questions = data.results
         startGame(questions)
       }
       fetchQuestions();
