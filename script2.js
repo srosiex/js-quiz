@@ -4,12 +4,12 @@ window.onload=function(){
     const startButton = document.getElementById('start-btn')
     const nextButton = document.getElementById('next-btn')
     const questionContainerElement = document.getElementById('question-container')
-    const scoreElement = document.getElementById('score')
     const scoreContainer = document.getElementById('score-container')
     let shuffledQuestions, currentQuestionIndex, shuffledAnswers
     const questionElement = document.getElementById('question')
     const answerButtonsElement = document.getElementById('answer-buttons')
     let score = 0;
+    let questions = [];
 
 
     startButton.addEventListener('click', startGame)
@@ -21,6 +21,7 @@ window.onload=function(){
 
     function startGame(questions) {
     startButton.classList.add('hide')
+    questionContainerElement.classList.remove('hide')
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
@@ -123,27 +124,12 @@ window.onload=function(){
           "https://opentdb.com/api.php?amount=10&category=15&difficulty=medium&type=multiple"
         );
         let data = await response.json();
-        let questions = data.results
-        startGame(questions)
+        questions.push(data.results)
+        startGame(questions[0])
       }
-      fetchQuestions();
+      fetchQuestions()
 
-    // const questions = [
-    //     {
-    //         question: 'What is 2 + 2',
-    //         answers: [
-    //             {text: '4', correct: true},
-    //             {text: '22', correct: false}
-    //         ]
-    //     },
-    //     {
-    //         question: 'What is 5 + 2',
-    //         answers: [
-    //             {text: '7', correct: true},
-    //             {text: '22', correct: false}
-    //         ]
-    //     }
-    // ]
+
 }
 
 
