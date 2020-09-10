@@ -125,9 +125,12 @@ window.onload=function(){
         );
         let data = await response.json();
         questions.push(data.results)
-        startGame(questions[0])
+            console.log(questions)
+            startGame(questions[0])
       }
       fetchQuestions()
+
+
 
 
 }
