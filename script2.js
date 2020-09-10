@@ -24,10 +24,7 @@ window.onload=function(){
     shuffledQuestions = questions.sort(() => Math.random() - .5)
     currentQuestionIndex = 0
     questionContainerElement.classList.remove('hide')
-    scoreElement.classList.remove('hide')
-    scoreContainer.classList.remove('hide')
     setNextQuestion()
-    scoreElement.innerText = `${score}`
     }
 
     function setNextQuestion(){
@@ -112,6 +109,9 @@ window.onload=function(){
             element.classList.add('wrong')
         }
         nextButton.classList.remove('hide')
+        // scoreElement.classList.remove('hide')
+        scoreContainer.classList.remove('hide')
+        scoreContainer.innerText = "Score: " + score
     }
 
     function clearStatusClass(element){
